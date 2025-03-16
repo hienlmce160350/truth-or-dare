@@ -1,6 +1,6 @@
 import { LuSparkles, LuZap } from "react-icons/lu";
-import TruthOrDareGame from "./menu/page";
 import { useState } from "react";
+import TruthOrDareGame from "../components/menu/page";
 
 export default function Home() {
   const [hoveredTruth, setHoveredTruth] = useState(false);

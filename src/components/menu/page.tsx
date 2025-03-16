@@ -1,10 +1,10 @@
 import { Button, Card } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { GoPeople } from "react-icons/go";
-import FriendsSetup from "./friends-setup/page";
-import GameScreen from "./game/page";
-import CouplesSetup from "./couple/page";
-import PartySetup from "./party/page";
+import FriendsSetup from "../friends-setup/page";
+import GameScreen from "../game/page";
+import CouplesSetup from "../couple/page";
+import PartySetup from "../party/page";
 import { motion, AnimatePresence } from "framer-motion";
 import { LuPartyPopper } from "react-icons/lu";
 import { TbMessageHeart } from "react-icons/tb";
@@ -183,4 +183,4 @@ const TruthOrDareGame = () => {
   );
 };
 
-export default TruthOrDareGame;
+export default memo(TruthOrDareGame);
