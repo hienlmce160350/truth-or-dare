@@ -5,22 +5,27 @@ import FriendsSetup from "../friends-setup/page";
 import GameScreen from "../game/page";
 import CouplesSetup from "../couple/page";
 import PartySetup from "../party/page";
+import SpeicalCoupleSetup from "../special-couple/page";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { LuPartyPopper } from "react-icons/lu";
 import { TbMessageHeart } from "react-icons/tb";
+import { BsBox2Heart } from "react-icons/bs";
 
-type GameMode = "menu" | "friends" | "couples" | "party" | "game";
+type GameMode = "menu" | "friends" | "couples" | "party" | "game" | "special";
 
 const TruthOrDareGame = () => {
   const [currentScreen, setCurrentScreen] = useState<GameMode>("menu");
   const [players, setPlayers] = useState<string[]>([]);
   const [currentMode, setCurrentMode] = useState<
-    "friends" | "couples" | "party"
+    "friends" | "couples" | "party" | "special"
   >("friends");
 
   const [direction, setDirection] = useState(1);
 
-  const handleModeSelect = (mode: "friends" | "couples" | "party") => {
+  const handleModeSelect = (
+    mode: "friends" | "couples" | "party" | "special"
+  ) => {
     setDirection(1);
     setCurrentMode(mode);
     setCurrentScreen(mode);
@@ -49,6 +54,10 @@ const TruthOrDareGame = () => {
 
     if (currentScreen === "party") {
       return <PartySetup onStart={startGame} onBack={backToMenu} />;
+    }
+
+    if (currentScreen === "special") {
+      return <SpeicalCoupleSetup onStart={startGame} onBack={backToMenu} />;
     }
 
     if (currentScreen === "game") {
@@ -125,6 +134,26 @@ const TruthOrDareGame = () => {
                     <div className="font-medium">Buổi tiệc</div>
                     <div className="text-sm text-gray-500">
                       Chơi nhóm vui vẻ
+                    </div>
+                  </div>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <Button
+                  variant="outlined"
+                  className="!text-black !font-medium !text-md items-center gap-4 w-full !justify-start !border-gray-200"
+                  onClick={() => handleModeSelect("special")}
+                >
+                  <BsBox2Heart className="text-lg text-rose-500" />
+                  <div className="flex flex-col items-start">
+                    <div className="font-medium">Cặp đôi đặc biệt</div>
+                    <div className="text-sm text-gray-500">
+                      Dành cho người yêu đặc biệt
                     </div>
                   </div>
                 </Button>

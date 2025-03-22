@@ -2,6 +2,7 @@ import {
   couplesQuestions,
   friendsQuestions,
   partyQuestions,
+  specialCouplesQuestions,
 } from "@/data/questions";
 import { Badge, Button, Card, CardContent, IconButton } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,7 +13,7 @@ import { FaTimes } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 
 interface GameScreenProps {
-  mode: "friends" | "couples" | "party";
+  mode: "friends" | "couples" | "party" | "special";
   players: string[];
   onBack: () => void;
 }
@@ -47,6 +48,8 @@ export default function GameScreen({ mode, players, onBack }: GameScreenProps) {
         return couplesQuestions;
       case "party":
         return partyQuestions;
+      case "special":
+        return specialCouplesQuestions;
     }
   };
 
@@ -112,6 +115,8 @@ export default function GameScreen({ mode, players, onBack }: GameScreenProps) {
         return "from-pink-500 to-purple-600";
       case "party":
         return "from-blue-600 to-purple-600";
+      case "special":
+        return "from-rose-500 to-purple-600";
     }
   };
 
@@ -123,6 +128,8 @@ export default function GameScreen({ mode, players, onBack }: GameScreenProps) {
         return "Cặp đôi";
       case "party":
         return "Buổi tiệc";
+      case "special":
+        return "Cặp đôi đặc biệt";
     }
   };
 
