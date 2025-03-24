@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Card } from "@mui/material";
 import React, { memo, useCallback, useState } from "react";
 import { GoPeople } from "react-icons/go";
@@ -11,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LuPartyPopper } from "react-icons/lu";
 import { TbMessageHeart } from "react-icons/tb";
 import { BsBox2Heart } from "react-icons/bs";
+import { useGetquestionListQuery } from "@/api/question";
 
 type GameMode = "menu" | "friends" | "couples" | "party" | "game" | "special";
 
@@ -22,6 +25,10 @@ const TruthOrDareGame = () => {
   >("friends");
 
   const [direction, setDirection] = useState(1);
+
+  const { questions } = useGetquestionListQuery();
+
+  console.log("questions: " + JSON.stringify(questions));
 
   const handleModeSelect = (
     mode: "friends" | "couples" | "party" | "special"
